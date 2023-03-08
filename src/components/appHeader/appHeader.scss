@@ -1,0 +1,45 @@
+.app {
+	background: #FFFFFF;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+	border-radius: 20px;
+	max-width: 1080px;
+	margin: 50px auto;
+	&__header {
+		display: flex;
+		justify-content: space-between;
+        padding: 40px;
+        border-bottom: 1px solid #EAEAEA;
+		&-left {
+			display: flex;
+			align-items: center;
+			column-gap: 15px;
+            h2 {
+               text-transform: uppercase;
+               font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+                color: #9D9D9D;
+            }
+		}
+		&-right {
+			display: flex;
+			align-items: center;
+			li {
+                &:nth-child(1) {
+                    margin-right: 15px;
+				}
+				&:nth-child(2) {
+                    margin-left: 10px;
+                    font-size: 14px;
+                    color: #5C5C5C;
+                    font-weight: 600;
+				}
+				&:nth-child(3) {
+					margin-left: 30px;
+					margin-right: 30px;
+				}
+			}
+		}
+	}
+}
