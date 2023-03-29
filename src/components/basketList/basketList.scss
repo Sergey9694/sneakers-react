@@ -1,4 +1,5 @@
 .basket__overlay {
+    display: none;
     position: absolute;
     left: 0;
     top: 0;
@@ -17,11 +18,83 @@
     background: #FFFFFF;
     box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
     padding: 20px 40px;
-    h2 {
-        font-size: 24px;
+
+    .basket__title { 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         margin-bottom: 30px;
-    } 
-    button {
+        h2 {
+            font-size: 24px;
+        }
+        &-close {
+            font-size: 35px;
+            transition: all 1s ease;
+            cursor: pointer;
+            &:hover {
+                color: #9DD558;
+                border-radius: 50%;
+                transform: rotate(360deg);
+            }
+        }
+        
+    }
+    
+
+    .basket__items {
+        flex: 1;
+        overflow: auto;
+        margin-bottom: 40px;
+    }
+
+    .basket__item {
+        display: flex;
+        align-items: center;
+        border: 1px solid #F3F3F3;
+        border-radius: 20px;
+        overflow: hidden;
+        padding: 5px 12px;
+        margin-bottom: 20px;
+        &-descr {
+            margin-right: 20px;
+        }
+        img {
+            margin-right: 20px;
+            width: 70px;
+            height: 70px;
+        }
+        p {
+            margin: 5px 0;
+        }
+        &-btn {
+            opacity: 0.5;
+            &:hover {
+                opacity: 1; 
+                cursor: pointer;
+            }
+        }
+    }
+
+    .basket__subtitle {
+        margin-bottom: 20px;
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+        div {
+            flex: 1;
+            height: 1px;
+            border-bottom: 1px dashed #dfdfdf;
+            position: relative;
+            top: -4px;
+            margin: 0 7px;
+        }
+    }
+    
+    .btn-green {
+        position: relative;
         width: 100%;
         height: 55px;
         background: #9DD558;
@@ -40,53 +113,21 @@
         &:active {
             background: darken($color: #9DD558, $amount: 5%)
         }
-    }  
-    .basket__items {
-        flex: 1;
-        .basket__item {
-            display: flex;
-            align-items: center;
-            border: 1px solid #F3F3F3;
-            border-radius: 20px;
-            overflow: hidden;
-            padding: 5px 12px;
-            margin-bottom: 20px;
-            &-descr {
-                margin-right: 20px;
-            }
+
+        img {
+            position: absolute;
+            right: 30px;
+            top: 20px;
+            transition: transform 0.15s ease-in-out;
+            
+        }
+
+        &:hover {
             img {
-                margin-right: 20px;
-                width: 70px;
-                height: 70px;
-            }
-            p {
-                margin: 5px 0;
-            }
-            &-btn {
-                opacity: 0.5;
-                &:hover {
-                    opacity: 1; 
-                    cursor: pointer;
-                }
+                transform: translateX(5px);
             }
         }
-    }
-    .basket__subtitle {
-        margin-bottom: 20px;
-        li {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 20px;
-        }
-        div {
-            flex: 1;
-            height: 1px;
-            border-bottom: 1px dashed #dfdfdf;
-            position: relative;
-            top: -4px;
-            margin: 0 7px;
-        }
+        
     }  
 }
 

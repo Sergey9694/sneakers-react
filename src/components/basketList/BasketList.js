@@ -1,12 +1,17 @@
-import sneakers2 from '../../resources/img/sneakers2.png';
 
 import './basketList.scss';
+
+import sneakers2 from '../../resources/img/sneakers2.png';
+import arrow from '../../resources/img/arrow.svg'
 
 const BasketList = () => {
     return(
         <div className="basket__overlay">
             <div className="basket__block">
-                <h2>Корзина</h2>
+                <div className="basket__title">
+                  <h2>Корзина</h2>
+                  <div class="basket__title-close">&times;</div>
+                </div>
                 <div className="basket__items">
                 <div className="basket__item">
                     <img src={sneakers2} alt="sneakers2" />
@@ -108,7 +113,7 @@ const BasketList = () => {
                         <b>1074 руб.</b>
                     </li>
                 </ul>
-                <button>Оформить заказ</button>
+                <button className='btn-green'>Оформить заказ <img src={arrow} alt="arrow" /></button>
             </div>
         </div>
     )
