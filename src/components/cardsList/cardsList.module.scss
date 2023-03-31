@@ -1,0 +1,85 @@
+.content {
+    padding: 40px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px 40px 40px;
+}
+
+.card {
+    background: #FFFFFF;
+    border: 1px solid #F3F3F3;
+    border-radius: 40px;
+    width: 220px;
+    padding: 30px;
+    transition: box-shadow 0.2s ease-in-out transform 0.2s ease-in-out;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06);  
+        transform: translateY(-5px);
+    }
+    svg {
+        cursor: pointer;
+    }
+    img {
+        display: block;
+        margin: 0 auto;
+        width: 133px;
+        height: 122px;
+    }
+}
+.descr {
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.price {
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+.subtitle {
+    text-transform: uppercase; 
+    color: #BDBDBD;
+    font-size: 11px;
+    font-weight: 400;
+}
+.amount {
+    font-weight: 700;
+    font-size: 14px;
+    color: #000;
+}
+.btn {
+    position: relative;
+    padding: 5px;
+    background: #FFFFFF;
+    border: 1px solid #F2F2F2;
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    &:before {
+        content: '';
+        display: block;
+        margin: 0 auto;
+        width: 11px;
+        height: 2px;
+        background-color: #D3D3D3;;
+    }	
+    &:after {
+        content: '';
+        position: absolute;
+        top: 32%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: block;
+        height: 11px;
+        width: 2px;
+        background-color: #D3D3D3;
+    }
+}
+

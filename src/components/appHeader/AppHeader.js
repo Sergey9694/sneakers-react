@@ -1,6 +1,6 @@
-import basket from '../../img/basket.png';
-import heart from '../../img/heart.png';
-import user from '../../img/user.png';
+import basket from '../../resources/img/basket.png';
+import heart from '../../resources/img/heart.png';
+import user from '../../resources/img/user.png';
 
 import './appHeader.scss';
 

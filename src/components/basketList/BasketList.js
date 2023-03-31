@@ -1,9 +1,8 @@
 
 import './basketList.scss';
 
-import sneakers2 from '../../img/sneakers2.png';
-import arrow from '../../img/arrow.svg'
-
+import sneakers2 from '../../resources/img/sneakers2.png';
+import arrow from '../../resources/img/arrow.svg'
 
 const BasketList = () => {
     return(

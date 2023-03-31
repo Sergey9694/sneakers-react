@@ -1,40 +1,18 @@
 
-// import sneakers from '../../resources/img/sneakers.png';
-// import sneakers2 from '../../resources/img/sneakers2.png';
-// import sneakers3 from '../../resources/img/sneakers3.png';
-// import sneakers4 from '../../resources/img/sneakers4.png';
-// import heart from '../../resources/img/heart.svg';
-// import heart_red from '../../resources/img/heart_red.svg';
+import heart from '../../resources/img/heart.svg';
+import heart_red from '../../resources/img/heart_red.svg';
 
-import './cardsList.scss';
-import { useEffect } from 'react';
+import styles from './cardsList.module.scss';
 
+console.log(styles);
 
 const CardsList = ({arr}) => {
 
-
-
-    const test = '@/img/basket.png';
-
-    // useEffect(() => {
-    //     let image = require('sneakers2.png');
-    // }, [])
-
-    // let image = require(`${test}${arr[0].imgSrc}`);
-    // console.log(require(`${test}${arr[0].imgSrc}`));
-    try {
-        // a path we KNOW is totally bogus and not a module
-        require(`${test}`)
-       }
-       catch (e) {
-        console.log('oh no big error')
-        console.log(e)
-       }
-    // console.log((`${test}${arr[0].imgSrc}`));
-
     const cards = arr.map(card => {
+        const {name, price, id, imgSrc} = card;
+        
         return (
-            <div className="cards">
+            <div className={styles.card}>
             <svg
     width={32}
     height={32}
@@ -56,21 +34,21 @@ const CardsList = ({arr}) => {
     strokeWidth={1.4}
     />
             </svg>
-            <img src={require(`${test}`)} alt={card.id} />
-            <div className="cards__descr">{card.name}</div>
-            <div className="cards__price">
-                <div className="cards__text">
-                    <div className="cards__subtitle">Цена:</div>
-                    <div className="cards__amount">{card.price} руб.</div>
+            <img src={imgSrc} alt={id}/>
+            <div className={styles.descr}>{name}</div>
+            <div className={styles.price}>
+                <div>
+                    <div className={styles.subtitle}>Цена:</div>
+                    <div className={styles.amount}>{price} руб.</div>
                 </div>
-                <button className='cards__btn'></button>
+                <button className={styles.btn}></button>
             </div>
         </div>
         )
     })
 
     return (
-        <div className="cards__list">
+        <div className={styles.wrapper}>
             {cards}
         </div>
     )
