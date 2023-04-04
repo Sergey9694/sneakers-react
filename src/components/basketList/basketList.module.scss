@@ -1,3 +1,5 @@
+@import "../../style/style.scss";
+
 .overlay {
     position: absolute;
     left: 0;
@@ -31,7 +33,7 @@
             transition: all 1s ease;
             cursor: pointer;
             &:hover {
-                color: #9dd558;
+                color: $base-color;
                 border-radius: 50%;
                 transform: rotate(360deg);
             }
@@ -94,7 +96,7 @@
         position: relative;
         width: 100%;
         height: 55px;
-        background: #9dd558;
+        background: $base-color;
         border-radius: 18px;
         border: none;
         font-weight: 600;
@@ -104,11 +106,11 @@
         transition: background 0.2s ease-in-out;
 
         &:hover {
-            background: lighten($color: #9dd558, $amount: 5%);
+            background: lighten($color: $base-color, $amount: 5%);
         }
 
         &:active {
-            background: darken($color: #9dd558, $amount: 5%);
+            background: darken($color: $base-color, $amount: 5%);
         }
 
         img {

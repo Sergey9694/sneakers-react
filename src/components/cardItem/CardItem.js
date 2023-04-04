@@ -40,10 +40,10 @@ const CardItem = ({ name, price, imgSrc, onAddToBasket }) => {
                 <img className={styles.item} src={imgSrc} alt="sneakers" />
                 <div className={styles.descr}>{name}</div>
                 <div className={styles.price}>
-                    <p className={styles.subtitle}>
+                    <div className={styles.subtitle}>
                         Цена: <br />
                         <p className={styles.amount}>{price} руб.</p>
-                    </p>
+                    </div>
                     <img
                         className={styles.btn}
                         src={isAdded ? greenChecked : btnPlus}
