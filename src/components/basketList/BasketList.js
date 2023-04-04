@@ -1,5 +1,4 @@
 import arrow from "../../resources/img/arrow.svg";
-import sneakers from "../../resources/img/sneakers.png";
 
 import styles from "../basketList/basketList.module.scss";
 
@@ -9,7 +8,7 @@ const BasketList = ({ onCloseBasket, items = [] }) => {
             <div className={styles.wrapper}>
                 <div className={styles.header}>
                     <h2>Корзина</h2>
-                    <div class={styles.close} onClick={onCloseBasket}>
+                    <div className={styles.close} onClick={onCloseBasket}>
                         &times;
                     </div>
                 </div>
@@ -17,7 +16,7 @@ const BasketList = ({ onCloseBasket, items = [] }) => {
                     {items.map(item => {
                         return (
                             <div className={styles.item}>
-                                <img src={item.imgSrc} alt="sneakers" />
+                                <img src={item.imgSrc} alt={item.id} />
                                 <div className={styles.descr}>
                                     <p>{item.name}</p>
                                     <b>{item.price}</b>

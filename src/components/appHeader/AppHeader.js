@@ -46,7 +46,7 @@ const AppHeader = ({ onOpenBasket }) => {
                     <p>1205 руб.</p>
                 </li>
                 <li>
-                    <img src={heart} alt="heart" />
+                    <img className={styles.heart} src={heart} alt="heart" />
                 </li>
                 <li>
                     <img src={user} alt="user" />
