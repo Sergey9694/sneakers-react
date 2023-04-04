@@ -4,7 +4,7 @@ import user from "../../resources/img/user.png";
 
 import styles from "./appHeader.module.scss";
 
-const AppHeader = ({ openBasket }) => {
+const AppHeader = ({ onOpenBasket }) => {
     return (
         <header className={styles.header}>
             <div className={styles.left}>
@@ -42,7 +42,7 @@ const AppHeader = ({ openBasket }) => {
                 <li>
                     <img src={basket} alt="basket" />
                 </li>
-                <li className={styles.active} onClick={openBasket}>
+                <li className={styles.active} onClick={onOpenBasket}>
                     <p>1205 руб.</p>
                 </li>
                 <li>

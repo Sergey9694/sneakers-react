@@ -7,6 +7,7 @@ import SearchPanel from "../searchPanel/SearchPanel";
 function App() {
     const [basketState, setBasketState] = useState(false);
     const [sneakers, setSneakers] = useState([]);
+    const [basketItems, setBasketItems] = useState([]);
 
     useEffect(() => {
         fetch("https://6429973eebb1476fcc4ca5c5.mockapi.io/sneakers")
@@ -15,15 +16,25 @@ function App() {
             })
             .then(json => setSneakers(json));
     }, []);
+    // add Sneakers to Basket
+    const onAddToBasket = obj => {
+        setBasketItems(basketItems => [...basketItems, obj]);
+    };
 
     return (
         <div className="app">
-            <AppHeader openBasket={() => setBasketState(true)} />
+            <AppHeader onOpenBasket={() => setBasketState(true)} />
             <SearchPanel />
             <main>
-                <CardsList arr={sneakers} />
+                <CardsList
+                    arr={sneakers}
+                    onAddToBasket={obj => onAddToBasket(obj)}
+                />
                 {basketState && (
-                    <BasketList closeBasket={() => setBasketState(false)} />
+                    <BasketList
+                        items={basketItems}
+                        onCloseBasket={() => setBasketState(false)}
+                    />
                 )}
             </main>
         </div>
