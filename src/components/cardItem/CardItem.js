@@ -5,11 +5,12 @@ import greenChecked from "../../resources/img/cheked.svg";
 
 import styles from "./cardItem.module.scss";
 
-const CardItem = ({ name, price, id, imgSrc }) => {
+const CardItem = ({ name, price, imgSrc, onAddToBasket }) => {
     const [isAdded, setIsAdded] = useState(false);
 
-    const changeBtn = () => {
+    const changeBtnAddToBasket = () => {
         setIsAdded(!isAdded);
+        onAddToBasket({ name, price, imgSrc });
     };
 
     return (
@@ -36,7 +37,7 @@ const CardItem = ({ name, price, id, imgSrc }) => {
                         strokeWidth={1.4}
                     />
                 </svg>
-                <img className={styles.item} src={imgSrc} alt={id} />
+                <img className={styles.item} src={imgSrc} alt="sneakers" />
                 <div className={styles.descr}>{name}</div>
                 <div className={styles.price}>
                     <p className={styles.subtitle}>
@@ -47,7 +48,7 @@ const CardItem = ({ name, price, id, imgSrc }) => {
                         className={styles.btn}
                         src={isAdded ? greenChecked : btnPlus}
                         alt="btn"
-                        onClick={changeBtn}
+                        onClick={changeBtnAddToBasket}
                     ></img>
                 </div>
             </div>
