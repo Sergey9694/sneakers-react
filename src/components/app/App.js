@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import AppHeader from "../appHeader/AppHeader";
 import BasketList from "../basketList/BasketList";
 import CardsList from "../cardsList/CardsList";
-import SearchPanel from "../searchPanel/SearchPanel";
 
 function App() {
     const [basketState, setBasketState] = useState(false);
@@ -24,7 +23,6 @@ function App() {
     return (
         <div className="app">
             <AppHeader onOpenBasket={() => setBasketState(true)} />
-            <SearchPanel />
             <main>
                 <CardsList
                     arr={sneakers}
