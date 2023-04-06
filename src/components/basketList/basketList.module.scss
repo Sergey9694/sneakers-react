@@ -40,6 +40,28 @@
         }
     }
 
+    .empty {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 0.8;
+        .case {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        p {
+            text-align: center;
+            opacity: 0.6;
+            margin-bottom: 40px;
+        }
+    }
+
     .items {
         flex: 1;
         overflow: auto;
@@ -65,7 +87,7 @@
         p {
             margin: 5px 0;
         }
-        .btn {
+        .remove {
             opacity: 0.5;
             &:hover {
                 opacity: 1;
@@ -91,39 +113,54 @@
             margin: 0 7px;
         }
     }
+}
+.submitBtn {
+    position: relative;
+    width: 100%;
+    height: 55px;
+    background: $base-color;
+    border-radius: 18px;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
 
-    .submit {
-        position: relative;
-        width: 100%;
-        height: 55px;
-        background: $base-color;
-        border-radius: 18px;
-        border: none;
-        font-weight: 600;
-        font-size: 16px;
-        color: #ffffff;
-        cursor: pointer;
-        transition: background 0.2s ease-in-out;
+    &:hover {
+        background: lighten($color: $base-color, $amount: 5%);
+    }
 
-        &:hover {
-            background: lighten($color: $base-color, $amount: 5%);
-        }
+    &:active {
+        background: darken($color: $base-color, $amount: 5%);
+    }
 
-        &:active {
-            background: darken($color: $base-color, $amount: 5%);
-        }
+    img {
+        position: absolute;
+        right: 30px;
+        top: 20px;
+        transition: transform 0.15s ease-in-out;
+    }
 
+    &:hover {
         img {
-            position: absolute;
-            right: 30px;
-            top: 20px;
-            transition: transform 0.15s ease-in-out;
+            transform: translateX(5px);
         }
+    }
+}
 
-        &:hover {
-            img {
-                transform: translateX(5px);
-            }
+.backBtn {
+    composes: submitBtn;
+    img {
+        position: absolute;
+        left: 30px;
+        top: 20px;
+        transform: rotate(180deg);
+        transition: transform 0.15s ease-in-out;
+    }
+    &:hover {
+        img {
+            transform: rotate(180deg) translateX(5px);
         }
     }
 }

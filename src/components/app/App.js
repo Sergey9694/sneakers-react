@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import AppHeader from "../appHeader/AppHeader";
 import BasketList from "../basketList/BasketList";
 import CardsList from "../cardsList/CardsList";
@@ -9,15 +10,30 @@ function App() {
     const [basketItems, setBasketItems] = useState([]);
 
     useEffect(() => {
-        fetch("https://6429973eebb1476fcc4ca5c5.mockapi.io/sneakers")
+        axios
+            .get("https://6429973eebb1476fcc4ca5c5.mockapi.io/sneakers")
             .then(res => {
-                return res.json();
-            })
-            .then(json => setSneakers(json));
+                setSneakers(res.data); //получаем все кросы
+            });
+        axios
+            .get("https://6429973eebb1476fcc4ca5c5.mockapi.io/basket")
+            .then(res => {
+                setBasketItems(res.data); //получаем нужные кросы в корзину
+            });
     }, []);
     // add Sneakers to Basket
     const onAddToBasket = obj => {
+        axios.post("https://6429973eebb1476fcc4ca5c5.mockapi.io/basket", obj);
         setBasketItems(basketItems => [...basketItems, obj]);
+    };
+
+    const onRemoveSneakers = id => {
+        setBasketItems(
+            basketItems => basketItems.filter(item => item.id !== id) // оставляет только те id которые не совпадают с приходящим id
+        );
+        axios.delete(
+            `https://6429973eebb1476fcc4ca5c5.mockapi.io/basket/${id}` // удаляет кросы с бекенда
+        );
     };
 
     return (
@@ -32,6 +48,7 @@ function App() {
                     <BasketList
                         items={basketItems}
                         onCloseBasket={() => setBasketState(false)}
+                        onRemoveSneakers={onRemoveSneakers}
                     />
                 )}
             </main>
