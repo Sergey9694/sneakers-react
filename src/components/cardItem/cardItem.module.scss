@@ -1,17 +1,21 @@
 .card {
-    background: #FFFFFF;
-    border: 1px solid #F3F3F3;
+    background: #ffffff;
+    border: 1px solid #f3f3f3;
     border-radius: 40px;
     width: 220px;
     padding: 30px;
     transition: box-shadow 0.2s ease-in-out transform 0.2s ease-in-out;
     &:hover {
-        box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06);  
+        box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06);
         transform: translateY(-5px);
     }
     svg {
         cursor: pointer;
     }
+}
+
+.heart {
+    cursor: pointer;
 }
 
 .item {
@@ -32,8 +36,8 @@
     justify-content: space-between;
 }
 .subtitle {
-    text-transform: uppercase; 
-    color: #BDBDBD;
+    text-transform: uppercase;
+    color: #bdbdbd;
     font-size: 11px;
     font-weight: 400;
 }

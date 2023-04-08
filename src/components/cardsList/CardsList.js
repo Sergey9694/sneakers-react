@@ -3,7 +3,7 @@ import CardItem from "../cardItem/CardItem";
 
 import styles from "./cardsList.module.scss";
 
-const CardsList = ({ arr, onAddToBasket }) => {
+const CardsList = ({ arr, onAddToBasket, onAddToFavorite }) => {
     const [searchValue, setSearchValue] = useState("");
 
     const onSearchChangeInput = e => {
@@ -19,6 +19,7 @@ const CardsList = ({ arr, onAddToBasket }) => {
                     key={id}
                     {...cardProps}
                     onAddToBasket={onAddToBasket}
+                    onAddToFavorite={onAddToFavorite}
                 />
             );
         });
