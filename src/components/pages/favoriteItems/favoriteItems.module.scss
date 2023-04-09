@@ -1,0 +1,42 @@
+@import "../../../style/style.scss";
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 40px 0 40px;
+}
+.block {
+    display: flex;
+    border: 1px solid #f3f3f3;
+    align-items: center;
+    padding: 0 15px;
+    border-radius: 10px;
+    position: relative;
+    .clear {
+        position: absolute;
+        right: 13px;
+        color: $base-color;
+        font-size: 25px;
+        transform: translateY(-5%);
+        cursor: pointer;
+    }
+    input {
+        border: 0;
+        padding: 13px;
+        max-width: 200px;
+        font-size: 16px;
+    }
+}
+
+.content {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 225px);
+    justify-content: space-between;
+    row-gap: 25px;
+    padding: 40px;
+}

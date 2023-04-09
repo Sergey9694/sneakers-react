@@ -7,9 +7,18 @@ import heart from "../../resources/img/heart.svg";
 
 import styles from "./cardItem.module.scss";
 
-const CardItem = ({ name, price, imgSrc, onAddToBasket, onAddToFavorite }) => {
+const CardItem = ({
+    id,
+    name,
+    price,
+    imgSrc,
+    onAddToBasket,
+    onAddToFavorite,
+    favorited = true,
+}) => {
+    console.log(favorited);
     const [isAdded, setIsAdded] = useState(false);
-    const [isFavorite, setIsFavorite] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(favorited);
 
     const changeBtnAddToBasket = () => {
         setIsAdded(!isAdded);
@@ -18,7 +27,7 @@ const CardItem = ({ name, price, imgSrc, onAddToBasket, onAddToFavorite }) => {
 
     const onFavorite = () => {
         setIsFavorite(!isFavorite);
-        onAddToFavorite({ name, price, imgSrc });
+        onAddToFavorite({ id, name, price, imgSrc });
     };
 
     return (

@@ -1,9 +1,9 @@
+import CardItem from "../../cardItem/CardItem";
 import { useState } from "react";
-import CardItem from "../cardItem/CardItem";
 
-import styles from "./cardsList.module.scss";
+import styles from "./cardsPage.module.scss";
 
-const CardsList = ({ arr, onAddToBasket, onAddToFavorite }) => {
+const CardsPage = ({ arr, onAddToBasket, onAddToFavorite }) => {
     const [searchValue, setSearchValue] = useState("");
 
     const onSearchChangeInput = e => {
@@ -23,7 +23,6 @@ const CardsList = ({ arr, onAddToBasket, onAddToFavorite }) => {
                 />
             );
         });
-
     return (
         <>
             <div className={styles.header}>
@@ -67,4 +66,4 @@ const CardsList = ({ arr, onAddToBasket, onAddToFavorite }) => {
     );
 };
 
-export default CardsList;
+export { CardsPage };
