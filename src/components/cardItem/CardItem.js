@@ -14,7 +14,7 @@ const CardItem = ({
     imgSrc,
     onAddToBasket,
     onAddToFavorite,
-    favorited = true,
+    favorited,
 }) => {
     const [isAdded, setIsAdded] = useState(false);
     const [isFavorite, setIsFavorite] = useState(favorited);
@@ -26,12 +26,15 @@ const CardItem = ({
 
     const onFavorite = () => {
         setIsFavorite(!isFavorite);
-        onAddToFavorite({ id, name, price, imgSrc });
+
+        onAddToFavorite({ idSneakers: id, name, price, imgSrc });
     };
+
+    //console.log("CardItem id:", id);
 
     return (
         <div>
-            <div className={styles.card}>
+            <div className={styles.card} id={`${id}`}>
                 <img
                     className={styles.heart}
                     src={isFavorite ? heartRed : heart}

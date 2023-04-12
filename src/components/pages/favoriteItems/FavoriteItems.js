@@ -4,11 +4,15 @@ import styles from "./favoriteItems.module.scss";
 
 const FavoriteItems = ({ arr, favorited, onAddToFavorite }) => {
     const items = arr.map(item => {
-        const { id, ...itemProps } = item;
+        const {idSneakers: id, name, price, imgSrc} = item;
         return (
             <CardItem
                 key={id}
-                {...itemProps}
+                id={id}
+                name={name}
+                price={price}
+                imgSrc={imgSrc}
+                favorited={true}
                 onAddToFavorite={onAddToFavorite}
             />
         );

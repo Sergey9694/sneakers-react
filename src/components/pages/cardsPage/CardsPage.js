@@ -13,19 +13,19 @@ const CardsPage = ({ arr, onAddToBasket, onAddToFavorite }) => {
     const cards = arr
         .filter(card => card.name.toLowerCase().includes(searchValue)) // фильтр перед возвратом нового массива
         .map(card => {
-            const { id, ...cardProps } = card;
             return (
                 <CardItem
-                    key={id}
-                    {...cardProps}
+                    key={card.id}
+                    {...card}
                     onAddToBasket={onAddToBasket}
                     onAddToFavorite={onAddToFavorite}
                 />
             );
         });
+
     return (
         <>
-            <div className={styles.header}>
+            <div className={styles.header} >
                 <h1>
                     {searchValue
                         ? `Поиск по запросу: "${searchValue.slice(0, 30)}"...`

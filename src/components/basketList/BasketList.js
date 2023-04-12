@@ -47,7 +47,7 @@ const FullBasket = ({ onRemoveSneakers, items = [] }) => {
             <div className={styles.items}>
                 {items.map(item => {
                     return (
-                        <div className={styles.item}>
+                        <div className={styles.item} key={item.id}>
                             <img src={item.imgSrc} alt={item.id} />
                             <div className={styles.descr}>
                                 <p>{item.name}</p>
