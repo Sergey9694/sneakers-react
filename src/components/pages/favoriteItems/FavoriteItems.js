@@ -3,13 +3,13 @@ import CardItem from "../../cardItem/CardItem";
 import styles from "./favoriteItems.module.scss";
 
 const FavoriteItems = ({ arr, favorited, onAddToFavorite }) => {
-    const cards = arr.map(card => {
-        const { id, ...cardProps } = card;
+    const items = arr.map(item => {
+        const { id, ...itemProps } = item;
         return (
             <CardItem
                 key={id}
-                {...cardProps}
-                onAddToFavorite={obj => onAddToFavorite(obj)}
+                {...itemProps}
+                onAddToFavorite={onAddToFavorite}
             />
         );
     });
@@ -20,7 +20,7 @@ const FavoriteItems = ({ arr, favorited, onAddToFavorite }) => {
                 <h1>Мои закладки</h1>
             </div>
 
-            <div className={styles.wrapper}>{cards}</div>
+            <div className={styles.wrapper}>{items}</div>
         </>
     );
 };

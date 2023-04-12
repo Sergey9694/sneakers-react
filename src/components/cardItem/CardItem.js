@@ -16,7 +16,6 @@ const CardItem = ({
     onAddToFavorite,
     favorited = true,
 }) => {
-    console.log(favorited);
     const [isAdded, setIsAdded] = useState(false);
     const [isFavorite, setIsFavorite] = useState(favorited);
 

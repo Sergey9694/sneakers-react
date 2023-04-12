@@ -47,11 +47,21 @@ function App() {
     };
 
     const onAddToFavorite = obj => {
-        axios.post(
-            "https://642ed8c88ca0fe3352da6f90.mockapi.io/favorites",
-            obj
-        );
-        setFavorites(favorites => [...favorites, obj]);
+        console.log(obj);
+        if (favorites.find(favObj => favObj.id === obj.id)) {
+            axios.delete(
+                `https://642ed8c88ca0fe3352da6f90.mockapi.io/favorites/${obj.id}`
+            );
+            setFavorites(favorites =>
+                favorites.filter(item => item.id !== obj.id)
+            );
+        } else {
+            axios.post(
+                "https://642ed8c88ca0fe3352da6f90.mockapi.io/favorites",
+                obj
+            );
+            setFavorites(favorites => [...favorites, obj]);
+        }
     };
 
     return (
