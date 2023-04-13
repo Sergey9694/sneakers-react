@@ -2,9 +2,9 @@ import CardItem from "../../cardItem/CardItem";
 
 import styles from "./favoriteItems.module.scss";
 
-const FavoriteItems = ({ arr, favorited, onAddToFavorite }) => {
+const FavoriteItems = ({ arr, onAddToFavorite }) => {
     const items = arr.map(item => {
-        const {idSneakers: id, name, price, imgSrc} = item;
+        const { idSneakers: id, name, price, imgSrc } = item;
         return (
             <CardItem
                 key={id}

@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import styles from "./cardsPage.module.scss";
 
-const CardsPage = ({ arr, onAddToBasket, onAddToFavorite }) => {
+const CardsPage = ({ arr, onAddToBasket, onAddToFavorite, basketItems }) => {
     const [searchValue, setSearchValue] = useState("");
 
     const onSearchChangeInput = e => {
@@ -13,19 +13,26 @@ const CardsPage = ({ arr, onAddToBasket, onAddToFavorite }) => {
     const cards = arr
         .filter(card => card.name.toLowerCase().includes(searchValue)) // фильтр перед возвратом нового массива
         .map(card => {
+            const { id, name, price, imgSrc } = card;
             return (
                 <CardItem
                     key={card.id}
-                    {...card}
+                    id={id}
+                    name={name}
+                    price={price}
+                    imgSrc={imgSrc}
                     onAddToBasket={onAddToBasket}
                     onAddToFavorite={onAddToFavorite}
+                    added={basketItems.some(
+                        obj => Number(obj.idBasket) === Number(card.id)
+                    )}
                 />
             );
         });
 
     return (
         <>
-            <div className={styles.header} >
+            <div className={styles.header}>
                 <h1>
                     {searchValue
                         ? `Поиск по запросу: "${searchValue.slice(0, 30)}"...`

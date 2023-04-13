@@ -14,35 +14,32 @@ function App() {
     const [favorites, setFavorites] = useState([]);
 
     const [shouldUpdateFavorive, setShouldUpdateFavorive] = useState(false);
+    const [shouldUpdateBasket, setShouldUpdateBasket] = useState(false);
 
     useEffect(() => {
         axios
             .get("https://6429973eebb1476fcc4ca5c5.mockapi.io/sneakers")
             .then(res => {
                 setSneakers(res.data); //получаем все кросы
-            });          
-        }, []);
+            });
+    }, []);
 
     useEffect(() => {
         axios
             .get("https://6429973eebb1476fcc4ca5c5.mockapi.io/basket")
             .then(res => {
-                setBasketItems(res.data); //получаем нужные кросы в корзину
-            });       
-        }, []);
+                setBasketItems(res.data); //получаем все кросы
+            });
+    }, [shouldUpdateBasket]);
 
     useEffect(() => {
         axios
             .get("https://642ed8c88ca0fe3352da6f90.mockapi.io/favorites")
             .then(res => {
                 setFavorites(res.data); //получаем нужные кросы в избранное
-            });            
-        }, [shouldUpdateFavorive]);
+            });
+    }, [shouldUpdateFavorive]);
 
-    console.log('sneakers', sneakers);
-    console.log('basketItems', basketItems);
-    console.log('favorites', favorites);
-        
     const onRemoveSneakers = id => {
         setBasketItems(
             basketItems => basketItems.filter(item => item.id !== id) // оставляет только те id которые не совпадают с приходящим id
@@ -54,28 +51,52 @@ function App() {
 
     // Отправляет запрос на добавление на бекенд товаров из корзины из фронта
     const onAddToBasket = obj => {
-        axios.post("https://6429973eebb1476fcc4ca5c5.mockapi.io/basket", obj);
-        setBasketItems(basketItems => [...basketItems, obj]);
+        console.log("onAddToBasket", obj);
+        const BaskObj = basketItems.find(
+            BaskObj => BaskObj.idBasket === obj.idBasket
+        );
+
+        if (BaskObj) {
+            axios
+                .delete(
+                    `https://6429973eebb1476fcc4ca5c5.mockapi.io/basket/${BaskObj.id}`
+                )
+                .then(_ => {
+                    setShouldUpdateBasket(!shouldUpdateBasket);
+                })
+                .catch(function (error) {
+                    console.log(JSON.stringify(error, null, 2));
+                });
+        } else {
+            axios
+                .post("https://6429973eebb1476fcc4ca5c5.mockapi.io/basket", obj)
+                .then(_ => setShouldUpdateBasket(!shouldUpdateBasket));
+        }
     };
 
     const onAddToFavorite = obj => {
-        console.log('onAddToFavorite', obj);
-        const favObj = favorites.find(favObj => favObj.idSneakers === obj.idSneakers);
+        console.log("onAddToFavorite", obj);
+        const favObj = favorites.find(
+            favObj => favObj.idSneakers === obj.idSneakers
+        );
         if (favObj) {
-            axios.delete(
-                `https://642ed8c88ca0fe3352da6f90.mockapi.io/favorites/${favObj.id}`
-            ).then((_) => 
-            {                  
-                setShouldUpdateFavorive(!shouldUpdateFavorive);
-            })
-            .catch( function(error) {
-                console.log(JSON.stringify(error, null, 2));
-            });
+            axios
+                .delete(
+                    `https://642ed8c88ca0fe3352da6f90.mockapi.io/favorites/${favObj.id}`
+                )
+                .then(_ => {
+                    setShouldUpdateFavorive(!shouldUpdateFavorive);
+                })
+                .catch(function (error) {
+                    console.log(JSON.stringify(error, null, 2));
+                });
         } else {
-            axios.post(
-                "https://642ed8c88ca0fe3352da6f90.mockapi.io/favorites",
-                obj
-            ).then((_) =>  setShouldUpdateFavorive(!shouldUpdateFavorive) );
+            axios
+                .post(
+                    "https://642ed8c88ca0fe3352da6f90.mockapi.io/favorites",
+                    obj
+                )
+                .then(_ => setShouldUpdateFavorive(!shouldUpdateFavorive));
         }
     };
 
@@ -98,6 +119,7 @@ function App() {
                             arr={sneakers}
                             onAddToBasket={obj => onAddToBasket(obj)}
                             onAddToFavorite={obj => onAddToFavorite(obj)}
+                            basketItems={basketItems}
                         />
                     }
                 ></Route>
